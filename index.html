@@ -48,12 +48,12 @@
   .bar .bv{font-size:12.5px;font-weight:800;color:var(--navy);text-align:right}
   .oddsbox{padding-bottom:12px}
   .oddstable{border:1px solid #e6edf5;border-radius:12px;overflow:hidden;background:#fff}
-  .oddsrow{display:grid;grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr) 46px;align-items:center;font-size:12px}
+  .oddsrow{display:grid;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr) 54px;align-items:center;font-size:12px}
   .oddsrow:nth-child(even){background:#f8fafc}
-  .oddsrow span{padding:7px 8px;border-left:1px solid #e6edf5}
+  .oddsrow span{padding:7px 6px;border-left:1px solid #e6edf5}
   .oddsrow span:first-child{border-left:0}
   .oddsn{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .oddsp{font-weight:900;text-align:right}
+  .oddsp{font-weight:900;text-align:right;white-space:nowrap}
   .oddsnote{font-size:10.8px;color:var(--slate);margin-top:9px;line-height:1.25}
   .top .brand{display:flex;align-items:center;gap:10px} .top .brand img{height:30px;width:auto;display:block}
   .gcard.heaven{background:linear-gradient(160deg,#E8F3FF,#fff);border-color:#bcdcff;overflow:hidden}
@@ -112,11 +112,11 @@
   #selout .spend{text-align:center;color:#94a3b8;font-size:11.5px;margin:8px 0 6px}
   #selout .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 9px}
   #selout .sgrid.ko{grid-template-columns:1fr}
-  #selout .sit{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:7px 10px;border-radius:9px;background:#f3f6fa;font-size:13.5px}
-  #selout .sit .nn{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  #selout .sit .pp{font-weight:800;color:#16233d;background:#fff;border-radius:6px;padding:2px 8px;min-width:40px;text-align:center}
+  #selout .sit{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:9px;background:#f3f6fa;font-size:13.5px}
+  #selout .sit .nn{flex:1;min-width:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #selout .sit .pn{flex:none;font-size:10.5px;font-weight:800;color:#0F5132}
+  #selout .sit .pp{flex:none;font-weight:800;color:#16233d;background:#fff;border-radius:6px;padding:2px 7px;min-width:34px;text-align:center}
   #selout .sit .pp.ko{min-width:auto;white-space:nowrap;font-size:12.5px}
-  #selout .sit .pn{font-size:10.5px;font-weight:800;color:#0F5132;margin-left:5px}
   #selout .sit .pn.z{color:#94a3b8}
   #selout .sit.ex{background:#C9EED8} #selout .sit.ex .pp{background:#0F5132;color:#fff}
   #selout .sit.sg{background:#EAF6EE} #selout .sit.sg .pp{color:#0F5132}
@@ -139,10 +139,10 @@
     else if(ko){ h+='<div class="spend">Qui\u00e9n pasa y con qu\u00e9 marcador:</div>'; }
     else { h+='<div class="spend">A\u00fan no jugado \u2014 pron\u00f3sticos:</div>'; }
     h+='<div class="sgrid'+(ko?" ko":"")+'">';
-    for(var k=0;k<ORD.length;k++){ var s=ORD[k]; var pk=(m.picks&&m.picks[s])||"-"; var c="",tick="",pn="";
-      if(m.real && !ko){ var pt=(m.pts&&m.pts[s]!=null)?m.pts[s]:0; pn=' <span class="pn'+(pt>0?"":" z")+'">'+pt+' pts</span>';
-        if(pk===m.real){ c="ex"; tick=" \u2713"; } else if(pk.indexOf("-")>=0 && sgn(pk)===sgn(m.real)){ c="sg"; } else { c="ms"; } }
-      h+='<div class="sit '+c+'"><span class="nn">'+(NM[s]||s)+pn+'</span><span class="pp'+(ko?" ko":"")+'">'+pk+tick+'</span></div>'; }
+    for(var k=0;k<ORD.length;k++){ var s=ORD[k]; var pk=(m.picks&&m.picks[s])||"-"; var c="",pn="";
+      if(m.real && !ko){ var pt=(m.pts&&m.pts[s]!=null)?m.pts[s]:0; pn='<span class="pn'+(pt>0?"":" z")+'">'+pt+' pts</span>';
+        if(pk===m.real){ c="ex"; } else if(pk.indexOf("-")>=0 && sgn(pk)===sgn(m.real)){ c="sg"; } else { c="ms"; } }
+      h+='<div class="sit '+c+'"><span class="nn">'+(NM[s]||s)+'</span>'+pn+'<span class="pp'+(ko?" ko":"")+'">'+pk+'</span></div>'; }
     h+='</div>'; document.getElementById("selout").innerHTML=h;
   }
   var now=new Date(); var dm=String(now.getDate()).padStart(2,"0")+"/"+String(now.getMonth()+1).padStart(2,"0");
