@@ -120,17 +120,19 @@
   #selout .sreal .t{font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.6px}
   #selout .sreal .sc{display:inline-block;background:#16233d;color:#fff;font-weight:800;font-size:15px;border-radius:8px;padding:4px 15px;margin-top:2px}
   #selout .spend{text-align:center;color:#94a3b8;font-size:11.5px;margin:8px 0 6px}
-  #selout .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 9px}
-  #selout .sgrid.ko{grid-template-columns:1fr}
-  #selout .sit{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:9px;background:#f3f6fa;font-size:13.5px}
-  #selout .sit .nn{flex:1;min-width:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  #selout .sit .pn{flex:none;font-size:10.5px;font-weight:800;color:#0F5132}
-  #selout .sit .pp{flex:none;font-weight:800;color:#16233d;background:#fff;border-radius:6px;padding:2px 7px;min-width:34px;text-align:center}
-  #selout .sit .pp.ko{min-width:auto;white-space:nowrap;font-size:12.5px}
+  #selout .sgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+  #selout .sgrid.ko{grid-template-columns:repeat(4,minmax(0,1fr))}
+  #selout .sit{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"nn pp" "pn pp";align-items:center;gap:1px 6px;min-height:42px;padding:7px 8px;border-radius:9px;background:#f3f6fa;font-size:12.5px}
+  #selout .sit .nn{grid-area:nn;min-width:0;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #selout .sit .pn{grid-area:pn;font-size:10.2px;font-weight:800;color:#0F5132;white-space:nowrap}
+  #selout .sit .pp{grid-area:pp;font-weight:900;color:#16233d;background:#fff;border-radius:6px;padding:2px 6px;min-width:34px;text-align:center;white-space:nowrap}
+  #selout .sgrid.ko .sit{grid-template-columns:1fr;grid-template-areas:"nn" "pp";align-content:start;min-height:47px}
+  #selout .sit .pp.ko{min-width:0;white-space:normal;font-size:11.8px;line-height:1.15;text-align:left;width:100%}
   #selout .sit .pn.z{color:#94a3b8}
   #selout .sit.ex{background:#C9EED8} #selout .sit.ex .pp{background:#0F5132;color:#fff}
   #selout .sit.sg{background:#EAF6EE} #selout .sit.sg .pp{color:#0F5132}
   #selout .sit.ms{opacity:.6}
+  @media(max-width:560px){#selout .sgrid,#selout .sgrid.ko{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 <script>
 (function(){
